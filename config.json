@@ -1,0 +1,7 @@
+{
+    "API_PORTS":{
+        "authentication":74,
+        "client":72,
+        "database":84
+    }
+}
