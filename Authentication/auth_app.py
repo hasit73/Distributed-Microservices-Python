@@ -57,9 +57,9 @@ def login():
     return "INVALID METHOD"
 
 
-def start_service(port):
+def start_service(host, port):
     print("Authentication service started")
-    app.run(port=port)
+    app.run(host=host, port=port)
 
 
 if __name__ == "__main__":

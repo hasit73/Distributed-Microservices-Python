@@ -1,7 +1,14 @@
 {
-    "API_PORTS":{
-        "authentication":74,
-        "client":72,
-        "database":84
+    "authentication":{
+        "address":"localhost",
+        "port":74
+    },
+    "client":{
+        "address":"localhost",
+        "port":72
+    },
+    "database":{
+        "address":"localhost",
+        "port":84
     }
 }

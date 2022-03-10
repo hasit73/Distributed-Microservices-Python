@@ -23,28 +23,34 @@ with open(CONFIG_FILE_PATH, "r") as conf_file:
     conf_data = json.load(conf_file)
 
 # configuration file contains port number for each services.
-API_PORTS = conf_data["API_PORTS"]
+authentication_conf = conf_data["authentication"]
+client_conf = conf_data["client"]
+database_conf = conf_data["database"]
+
 
 
 if __name__ == "__main__":
     # start authentication service
     auth_process = multiprocessing.Process(
         target=auth_app.start_service,
-        args=(API_PORTS["authentication"],)
+        args=(authentication_conf["address"],
+              authentication_conf["port"])
     )
     auth_process.start()
 
     # start Database service
     db_process = multiprocessing.Process(
         target=db_app.start_service,
-        args=(API_PORTS["database"],)
+        args=(database_conf["address"],
+              database_conf["port"])
     )
     db_process.start()
 
     # start Client service
     client_process = multiprocessing.Process(
         target=client_app.start_service,
-        args=(API_PORTS["client"],)
+        args=(client_conf["address"],
+              client_conf["port"])
     )
     client_process.start()
 

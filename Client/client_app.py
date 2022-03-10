@@ -20,11 +20,11 @@ CONFIG_FILE_PATH = "C:/Users/NIrali/Documents/GitHub/distributed-micro-service" 
 with open(CONFIG_FILE_PATH, "r") as conf_file:
     conf_data = json.load(conf_file)
 
-BASE_URL = "http://localhost:{}/"
-DATABASE_API_URL = BASE_URL.format(conf_data["API_PORTS"]["database"])
-AUTHENTICATION_API_URL = BASE_URL.format(
-    conf_data["API_PORTS"]["authentication"]
-)
+BASE_URL = "http://{}:{}/"
+DATABASE_API_URL = BASE_URL.format(conf_data["database"]["address"],
+                                   conf_data["database"]["port"])
+AUTHENTICATION_API_URL = BASE_URL.format(conf_data["authentication"]["address"],
+                                         conf_data["authentication"]["port"])
 
 
 @app.route("/")
@@ -100,11 +100,11 @@ def delete_employee(emp_id):
     return redirect("/")
 
 
-def start_service(port):
+def start_service(host, port):
     app.secret_key = 'super secret key'
     app.config['SESSION_TYPE'] = 'filesystem'
     print("Client service started")
-    app.run(port=port)
+    app.run(host=host, port=port)
 
 
 if __name__ == "__main__":

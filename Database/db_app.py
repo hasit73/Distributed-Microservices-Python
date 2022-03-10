@@ -64,9 +64,9 @@ def get_employees():
         return {"data": []}
 
 
-def start_service(port):
+def start_service(host, port):
     print("Database service started")
-    app.run(port=port)
+    app.run(host=host, port=port)
 
 
 if __name__ == "__main__":
