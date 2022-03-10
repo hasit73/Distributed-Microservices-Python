@@ -13,7 +13,7 @@ Each services running on different ports.
 
 Step 1:
 
-- Configure port number for each services in `config.json`
+- Configure host address and port number for each services in `config.json`
 
 Step 2:
 
